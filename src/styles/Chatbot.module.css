@@ -1,0 +1,71 @@
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    height: 40px;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #616161;
+    border-radius: 15px;
+}
+
+.input {
+    border-radius: 15px;
+    height: 34px;
+    width: 60vw;
+    border: none;
+    outline: none;
+    text-indent: 5px; 
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.sendButton {
+    padding: 3px;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    
+    border-radius: 10px;
+}
+
+.input:valid + .sendButton {
+    background-color: rgb(46, 183, 46);
+    color: white;
+}
+  
+.input:invalid + .sendButton {
+    background-color: rgb(200, 200, 200);
+    color: rgb(255, 255, 255);
+}
+
+.sendButton:active {
+    background-color: rgb(69, 123, 133)!important;
+    color: rgb(255, 255, 255)!important;
+}
+
+.messageContainer {
+    position: absolute;
+    width: 60vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    top: 30px;
+    bottom: 120px!important;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    border: #616161;
+}
+
+.bubble {
+    height: 30px;
+    width: auto;
+    border-radius: 10px;
+    background-color: rgb(46, 183, 46);
+    color: rgb(255, 255, 255);
+}
