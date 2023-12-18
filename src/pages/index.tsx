@@ -5,19 +5,21 @@ import Bubble from '@/components/bubble';
 
 function Main() {
   const [inputValue, setInputValue] = useState('');
+  const messageArray = [
+    { text: 'Hello', role: 'yourself' },
+    { text: 'How are you?', role: 'yourself' },
+    { text: 'I am doing great!', role: 'yourself' },
+    { text: 'Nice to meet you. I am vary happy. How do you think? I am fine too.', role: 'yourself' },
+  ];
+  const [messages, setMessages] = useState(messageArray);
 
   const handleInputChange = (event: any) => {
     setInputValue(event.target.value);
   };
-  const message = {
-    text: inputValue,
-    role: 'yourself'
-  }
-
   return (
-    <>
+    <div className={styles.container}>
     <div className={styles.messageContainer}>
-      <Bubble message={message} />
+      <Bubble messages={messages} />
     </div>
       <div className={styles.inputContainer}>
         <input
@@ -30,7 +32,7 @@ function Main() {
         />
         <BiSolidSend className={styles.sendButton} />
       </div>
-    </>
+    </div>
   );
 }
 
