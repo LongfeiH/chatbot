@@ -1,8 +1,7 @@
 import styles from '@/styles/Chatbot.module.css';
 
-function Bubble(props: any) {
-    console.log(props);
-    const { text } = props.message.text;
+function Bubble(props: {message:{text:string}}) {
+    const text = props.message.text;
     return (
         <>
             <button

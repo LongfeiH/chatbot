@@ -10,7 +10,7 @@ function Main() {
     setInputValue(event.target.value);
   };
   const message = {
-    text: 'nihaoaaaaaaaaaa',
+    text: inputValue,
     role: 'yourself'
   }
 
