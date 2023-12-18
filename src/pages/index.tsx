@@ -16,6 +16,14 @@ function Main() {
   const handleInputChange = (event: any) => {
     setInputValue(event.target.value);
   };
+  const handleSendClick = () => {
+    if (inputValue.trim() !== '') {
+      const newMessage = { text: inputValue, role: 'yourself' };
+      setMessages([...messages, newMessage]);
+      setInputValue('');
+    }
+  };
+
   return (
     <div className={styles.container}>
     <div className={styles.messageContainer}>
@@ -30,7 +38,9 @@ function Main() {
           onChange={handleInputChange}
           placeholder="Type something..."
         />
-        <BiSolidSend className={styles.sendButton} />
+        <BiSolidSend
+        className={styles.sendButton}
+        onClick={handleSendClick}/>
       </div>
     </div>
   );
