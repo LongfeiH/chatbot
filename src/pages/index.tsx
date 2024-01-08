@@ -1,24 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '@/styles/Chatbot.module.css';
 import { BiSolidSend } from "react-icons/bi";
 import Bubble from '@/components/bubble';
+import { table } from 'console';
 
 function Main() {
   const [inputValue, setInputValue] = useState('');
-  const messageArray = [
-    { text: 'Hello', role: 'yourself' },
-    { text: 'How are you?', role: 'yourself' },
-    { text: 'I am doing great!', role: 'yourself' },
-    { text: 'Nice to meet you. I am vary happy. How do you think? I am fine too.', role: 'yourself' },
-  ];
-  const [messages, setMessages] = useState(messageArray);
+  const [messages, setMessages] = useState<any>();
+  
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch('/api/get', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ tableName: 'conversation' }),
+        });
+        const data = await res.json();
+        setMessages(data);
+      } catch (error) {
+        console.error('Fetch Error:', error);
+      }
+    }
+    
+    fetchData();  
+  }, []);
+
+  async function insertData(tableName:string,role:string,message:string) {
+    try {
+      const res = await fetch('/api/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ tableName, role, message }),
+      });
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Fetch Error:', error);
+    }
+  }
 
   const handleInputChange = (event: any) => {
     setInputValue(event.target.value);
   };
   const handleSendClick = () => {
     if (inputValue.trim() !== '') {
-      const newMessage = { text: inputValue, role: 'yourself' };
+      const newMessage = { message: inputValue, role: 'User' };
+      insertData('conversation','User',inputValue);
       setMessages([...messages, newMessage]);
       setInputValue('');
     }

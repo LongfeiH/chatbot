@@ -1,11 +1,2 @@
 # next.js
 /.next/
-
-#node_modules
-/node_modules/
-
-#yarn.lock
-/yarn.lock
-
-#package-lock
-package-lock.json
