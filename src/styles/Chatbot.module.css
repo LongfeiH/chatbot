@@ -57,19 +57,23 @@
 .messageContainer {
     position: relative;
     width: 60vw;
-    height: auto;
+    max-height: 82vh; 
+    overflow-y: auto; 
     display: flex;
     flex-direction: column;
     left: 50%;
     top: 20px;
-    bottom: 120px!important;
+    bottom: 20px!important;
     transform: translateX(-50%);
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     border: #616161;
+    box-sizing: border-box;
+    
 }
 
 .bubble {
+    max-height: 100%;
     position: relative;
     padding: 5px 10px;
     height: auto;

@@ -2,7 +2,7 @@ import styles from '@/styles/Chatbot.module.css';
 
 function Bubble(props: { messages: any }) {
     const messages = props.messages;
-    console.log(messages);
+    // console.log(messages);
     return (
         <>
             {messages?.map((message: any, index: number) => (
